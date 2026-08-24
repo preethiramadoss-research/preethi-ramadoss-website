@@ -95,12 +95,14 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    if (isSpamPattern(fullText)) {
-      return NextResponse.json(
-        { success: false, message: "Your message appears to be spam." },
-        { status: 400 }
-      )
-    }
+    // Spam pattern check disabled due to false positives on legitimate messages.
+    // Re-enable after tuning patterns if needed.
+    // if (isSpamPattern(fullText)) {
+    //   return NextResponse.json(
+    //     { success: false, message: "Your message appears to be spam." },
+    //     { status: 400 }
+    //   )
+    // }
 
     const host = process.env.SMTP_HOST
     const port = Number(process.env.SMTP_PORT || "587")

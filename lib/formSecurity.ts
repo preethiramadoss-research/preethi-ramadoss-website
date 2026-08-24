@@ -15,11 +15,6 @@ export function containsBadWords(text: string): boolean {
 export function isSpamPattern(text: string): boolean {
   const lower = text.toLowerCase()
   const spamIndicators = [
-    /https?:\/\//i,
-    /www\./i,
-    /\.com/i,
-    /\d{10,}/,
-    /(.)\1{4,}/,
     /buy now/i,
     /order now/i,
     /limited time/i,
@@ -42,6 +37,23 @@ export function isSpamPattern(text: string): boolean {
     /notification/i,
     /turn on/i,
     /bell icon/i,
+    /earn \$\d/i,
+    /make \$\d/i,
+    /100% free/i,
+    /no cost/i,
+    /risk free/i,
+    /guaranteed/i,
+    /amazing/i,
+    /incredible/i,
+    /unbelievable/i,
+    /winner selected/i,
+    /you have (been )?chosen/i,
+    /claim (your )?prize/i,
+    /exclusive deal/i,
+    /act immediately/i,
+    /limited offer/i,
+    /expires today/i,
+    /buyer beware/i,
   ]
   return spamIndicators.some(pattern => pattern.test(lower))
 }
