@@ -1,0 +1,24 @@
+/* Additional global utilities separated to avoid PostCSS parsing issues in globals.css */
+
+/* Utilities */
+.btn-primary { background-color: var(--brand); color: #fff }
+.btn-accent { background-color: var(--accent); color: #fff }
+.text-muted { color: var(--muted) }
+
+/* Gold accent underline for headings */
+.heading-accent { position: relative; color: var(--brand) }
+.heading-accent::after { content: ''; display: block; width: 56px; height: 4px; background: var(--gold); margin-top: 8px; border-radius: 2px }
+
+/* Hero background helper: will be applied inline by the client component when images are available */
+.hero-bg { background-position: center; background-size: cover; background-repeat: no-repeat }
+
+/* Utility for gold background used by Badge when Tailwind class isn't available */
+.bg-gold { background-color: var(--gold); }
+
+/* Anti-scrape protections for images */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+}
