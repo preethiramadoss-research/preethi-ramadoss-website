@@ -37,11 +37,8 @@ export const INNOVATIONS: Innovation[] = [
     ],
     patentNumber: '415283',
     patentDetails: {
-      title: '[VERIFY PATENT TITLE] — Biodegradable wearable sweat glucose biosensor',
-      jurisdiction: '[VERIFY PATENT JURISDICTION]',
-      grantDate: '[VERIFY GRANT DATE]',
-      owner: '[VERIFY PATENT OWNER]',
-      link: '[ADD OFFICIAL PATENT DATABASE LINK]'
+      title: 'FLEXIBLE AND BIODEGRADABLE POLYMER COMPOSITE FOR SENSING SWEAT GLUCOSE',
+      grantDate: '25/11/2019',
     }
   },
   {
@@ -63,11 +60,8 @@ export const INNOVATIONS: Innovation[] = [
     ],
     patentNumber: '355605',
     patentDetails: {
-      title: '[VERIFY PATENT TITLE] — Biodegradable sanitary napkin',
-      jurisdiction: '[VERIFY PATENT JURISDICTION]',
-      grantDate: '[VERIFY GRANT DATE]',
-      owner: '[VERIFY PATENT OWNER]',
-      link: '[ADD OFFICIAL PATENT DATABASE LINK]'
+      title: 'BIODEGRADABLE SANITARY NAPKIN FOR PERSONAL AND ENVIRONMENTAL HYGIENE AND METHOD THEREOF',
+      grantDate: '	27/11/2018',
     }
   }
 ]

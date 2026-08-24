@@ -1,15 +1,15 @@
-"use client";
+"use client"
 
-import React from "react";
-import Button from "../ui/Button";
-import heroImage from "../../app/assets/profile/hero.jpeg";
+import React from "react"
+import Button from "../ui/Button"
+import heroImage from "../../app/assets/profile/hero.jpeg"
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../ui/Card";
+} from "../ui/Card"
 
 export default function Hero() {
   return (
@@ -58,6 +58,8 @@ export default function Hero() {
               src={heroImage.src}
               alt="Dr. Preethi Ramadoss"
               className="w-full h-auto object-cover"
+              draggable={false}
+              onContextMenu={(e) => e.preventDefault()}
             />
           </CardContent>
           <CardFooter className="flex-col items-start gap-1 p-6 pt-0">
@@ -67,5 +69,5 @@ export default function Hero() {
         </Card>
       </div>
     </section>
-  );
+  )
 }

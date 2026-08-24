@@ -14,7 +14,10 @@ module.exports = {
         slate: {
           900: '#0b1220'
         }
-      }
+      },
+      fontFamily: {
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
     }
   },
   plugins: []

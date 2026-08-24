@@ -2,8 +2,10 @@ import React from 'react'
 import Button from '../ui/Button'
 import { Card } from '../ui/Card'
 import Badge from '../ui/Badge'
+import Link from 'next/link'
 
-export default function TechnologyOpportunityCard({title, desc, patent}:{title:string; desc:string; patent?:string}){
+export default function TechnologyOpportunityCard({title, desc, patent, slug}:{title:string; desc:string; patent?:string; slug?:string}){
+  const exploreHref = slug ? `/innovations/${slug}` : '/innovations'
   return (
     <Card>
       <div className="flex flex-col gap-2">
@@ -16,7 +18,7 @@ export default function TechnologyOpportunityCard({title, desc, patent}:{title:s
         <div className="text-sm text-slate-500">{patent ? `Patent No. ${patent}` : 'Patent pending'}</div>
       </div>
       <div className="mt-4 flex flex-wrap items-center gap-3">
-        <Button href="/innovations" variant="outline">Explore Technology</Button>
+        <Button href={exploreHref} variant="outline">Explore Technology</Button>
         <Button href="/contact" variant="primary">Discuss Partnership</Button>
       </div>
     </Card>

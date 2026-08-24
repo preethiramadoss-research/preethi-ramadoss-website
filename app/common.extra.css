@@ -14,3 +14,11 @@
 
 /* Utility for gold background used by Badge when Tailwind class isn't available */
 .bg-gold { background-color: var(--gold); }
+
+/* Anti-scrape protections for images */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+}

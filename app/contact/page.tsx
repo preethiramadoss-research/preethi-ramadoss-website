@@ -5,9 +5,11 @@ import ContactForm from '../../components/forms/ContactForm'
 export default function ContactPage(){
   return (
     <div className="space-y-8">
-      <header>
-        <h1 className="text-2xl md:text-3xl font-semibold heading-accent">{CONTACT.hero.title}</h1>
-        <p className="mt-2 text-slate-600">{CONTACT.hero.subtitle}</p>
+      <header className="flex items-center gap-4">
+        <div>
+          <h1 className="text-2xl md:text-3xl font-semibold heading-accent">{CONTACT.hero.title}</h1>
+          <p className="mt-2 text-slate-600">{CONTACT.hero.subtitle}</p>
+        </div>
       </header>
 
       <section className="grid md:grid-cols-2 gap-6">

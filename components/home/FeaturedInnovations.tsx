@@ -16,6 +16,7 @@ export default function FeaturedInnovations() {
             title={i.title}
             desc={i.shortDescription}
             patent={i.patentNumber}
+            slug={i.slug}
           />
         ))}
       </div>

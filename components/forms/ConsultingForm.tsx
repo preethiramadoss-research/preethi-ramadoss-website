@@ -1,29 +1,36 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
-export default function ConsultingForm(){
+export default function ConsultingForm() {
   const [loading, setLoading] = useState(false)
   const [sent, setSent] = useState(false)
-  const [error, setError] = useState('')
+  const [error, setError] = useState("")
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const form = e.currentTarget
+    if (!form.checkValidity()) {
+      form.reportValidity()
+      return
+    }
+
     e.preventDefault()
     setLoading(true)
-    setError('')
-    const form = e.currentTarget
+    setError("")
     const data = {
-      name: (form.elements.namedItem('name') as HTMLInputElement).value,
-      organization: (form.elements.namedItem('organization') as HTMLInputElement).value,
-      email: (form.elements.namedItem('email') as HTMLInputElement).value,
-      country: (form.elements.namedItem('country') as HTMLInputElement).value,
-      inquiry: (form.elements.namedItem('engagement') as HTMLSelectElement).value,
-      message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
+      name: (form.elements.namedItem("name") as HTMLInputElement).value,
+      organization: (form.elements.namedItem("organization") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      country: (form.elements.namedItem("country") as HTMLInputElement).value,
+      inquiry: (form.elements.namedItem("engagement") as HTMLSelectElement).value,
+      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+      honeypot: (form.elements.namedItem("website") as HTMLInputElement).value,
+      _time: Date.now(),
     }
 
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       })
       const result = await res.json()
@@ -31,11 +38,11 @@ export default function ConsultingForm(){
         setSent(true)
         form.reset()
       } else {
-        setError(result.message || 'Failed to submit inquiry.')
+        setError(result.message || "Failed to submit inquiry.")
         form.reset()
       }
     } catch {
-      setError('Failed to submit inquiry. Please try again.')
+      setError("Failed to submit inquiry. Please try again.")
       form.reset()
     } finally {
       setLoading(false)
@@ -48,20 +55,21 @@ export default function ConsultingForm(){
 
   return (
     <form className="mt-4 space-y-3" onSubmit={handleSubmit}>
-      <input required name="name" placeholder="Name" className="w-full border px-3 py-2 rounded" />
-      <input name="organization" placeholder="Organization" className="w-full border px-3 py-2 rounded" />
-      <input name="email" type="email" placeholder="Email" className="w-full border px-3 py-2 rounded" />
-      <input name="country" placeholder="Country" className="w-full border px-3 py-2 rounded" />
+      <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" />
+      <input required name="name" placeholder="Name" className="w-full border px-3 py-2 rounded" autoComplete="name" />
+      <input name="organization" placeholder="Organization" className="w-full border px-3 py-2 rounded" autoComplete="organization" />
+      <input required name="email" type="email" placeholder="Email" className="w-full border px-3 py-2 rounded" autoComplete="email" />
+      <input name="country" placeholder="Country" className="w-full border px-3 py-2 rounded" autoComplete="country-name" />
       <select name="engagement" className="w-full border px-3 py-2 rounded">
         <option>Technical Discovery Session</option>
         <option>Project-Based Consulting</option>
         <option>Research Collaboration</option>
         <option>Scientific Advisory</option>
       </select>
-      <textarea name="message" placeholder="Brief description of scientific/R&D challenge" className="w-full border px-3 py-2 rounded h-32" />
+      <textarea required name="message" placeholder="Brief description of scientific/R&D challenge" minLength={10} className="w-full border px-3 py-2 rounded h-32" />
       {error && <p className="text-sm text-red-600">{error}</p>}
       <div className="flex justify-end">
-        <button type="submit" disabled={loading} className="px-4 py-2 bg-primary text-white rounded disabled:opacity-60 disabled:cursor-not-allowed">{loading ? 'Sending...' : 'Submit Inquiry'}</button>
+        <button type="submit" disabled={loading} className="px-4 py-2 bg-primary text-white rounded disabled:opacity-60 disabled:cursor-not-allowed">{loading ? "Sending..." : "Submit Inquiry"}</button>
       </div>
     </form>
   )

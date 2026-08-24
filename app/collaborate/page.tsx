@@ -12,14 +12,15 @@ export default function CollaboratePage(){
 
       <section className="grid md:grid-cols-2 gap-6">
         <div className="p-6 border rounded-xl bg-white">
-          <h3 className="font-semibold">Areas of Interest</h3>
+          <h3 className="font-semibold">Collaboration Types</h3>
           <ul className="mt-3 text-sm text-slate-700 space-y-1">
             {COLLABORATE.types.map(t => <li key={t}>• {t}</li>)}
           </ul>
         </div>
 
         <aside className="p-6 border rounded-xl bg-white">
-          <h3 className="font-semibold">Explore a Collaboration</h3>
+          <h3 className="font-semibold">Start a Conversation</h3>
+          <p className="mt-2 text-sm text-slate-600">Share your project interests and collaboration goals.</p>
           <CollaborateForm />
         </aside>
       </section>
