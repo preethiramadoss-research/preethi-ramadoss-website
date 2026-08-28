@@ -34,7 +34,7 @@ export default function RootLayout({
           {children}
         </main>
 
-        <div className="fixed bottom-0 left-0 z-50 w-full">
+        <div className="fixed bottom-0 left-0 z-100 w-full">
           <Footer />
         </div>
 
